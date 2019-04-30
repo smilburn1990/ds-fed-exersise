@@ -1,14 +1,14 @@
 <template>
   <div>
-    <lazy-component class="dynamic-list" v-for="(item, i) in data" :key="i">
-      <div class="dynamic-list__left">
+    <lazy-component class="dynamic-list" v-for="(item, i) in data" :key="i" @click.native="detailNumber = i">
+      <div class="dynamic-list__left" v-show="detailNumber === i">
         <img class="dynamic-list__left--image" :src="item.image_src"/>
         <h3 class="dynamic-list__left--price">{{ item.price | currencyParse }}</h3>
         <h3 class="dynamic-list__left--price" :style="item.status === 'available' ? 'background-color:#04BAB3' : 'background-color:#ff4c4c'">{{ item.status }}</h3>
       </div>
       <div class="dynamic-list__right">
         <h2>{{ item.name }}</h2>
-        <p>{{ item.desc }}</p>
+        <p v-show="detailNumber === i">{{ item.desc }}</p>
       </div>
     </lazy-component>
   </div>
@@ -21,6 +21,11 @@ export default {
     data: {
       type: Array,
       default: () => []
+    }
+  },
+  data() {
+    return {
+      detailNumber: null
     }
   }
 }
