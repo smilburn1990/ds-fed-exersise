@@ -43,5 +43,8 @@ export default {
   &__logo {
     width: 16rem;
   }
+  &__list {
+    width: 100%;
+  }
 }
 </style>

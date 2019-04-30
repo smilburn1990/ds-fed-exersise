@@ -18,7 +18,8 @@ export default {
   flex-direction: column;
   align-items: center;
   &__logo {
-    width: 16rem;
+    margin-top: 10rem;
+    width: 80%;
   }
 }
 </style>
