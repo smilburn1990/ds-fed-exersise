@@ -4,7 +4,7 @@
   <div class="apartment-list__container" v-if="!loading">
     <h1 class="apartment-list__container--title">Available apartments</h1>
     <!-- Pass data to new dynamic list component -->
-    <dynamic-list class="apartment-list__container--list" :data="apartmentData"/>
+    <dynamic-list class="apartment-list__container--list" :data="filterApartmentData"/>
   </div>
 </div>
 </template>
