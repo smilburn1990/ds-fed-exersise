@@ -1,9 +1,12 @@
 <template>
-  <div class="apartment-list">
-    <h1 class="apartment-list__title">Available apartments</h1>
+<div class="apartment-list">
+  <iframe class="apartment-list__loading" v-if="loading" src="https://giphy.com/embed/3oEjI6SIIHBdRxXI40"></iframe>
+  <div class="apartment-list__container" v-if="!loading">
+    <h1 class="apartment-list__container--title">Available apartments</h1>
     <!-- Pass data to new dynamic list component -->
-    <dynamic-list class="apartment-list__list" :data="apartmentData"/>
+    <dynamic-list class="apartment-list__container--list" :data="apartmentData"/>
   </div>
+</div>
 </template>
 
 <script>
@@ -24,6 +27,7 @@ export default {
     ...mapGetters(['filterApartmentData']),
     ...mapState({
       apartmentData: state => state.apartmentList,
+      loading: state => state.loading
     })
   },
   methods: {
@@ -36,15 +40,23 @@ export default {
 
 <style scoped lang="scss">
 .apartment-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 6rem;
-  &__logo {
-    width: 16rem;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: 1024px) {
+      padding: 0 2rem;
+    }
+    &--logo {
+      width: 16rem;
+    }
+    &--list {
+      width: 100%;
+    }
   }
-  &__list {
+  &__loading {
     width: 100%;
+    border: none;
   }
 }
 </style>
